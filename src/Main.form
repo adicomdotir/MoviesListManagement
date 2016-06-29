@@ -14,7 +14,6 @@
                 <Property name="text" type="java.lang.String" value="&#x62b;&#x628;&#x62a; &#x641;&#x6cc;&#x644;&#x645;"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MenuItemInsertMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemInsertActionPerformed"/>
               </Events>
             </MenuItem>
@@ -23,7 +22,6 @@
                 <Property name="text" type="java.lang.String" value="&#x62c;&#x633;&#x62a;&#x648;&#x62c;&#x648;&#x6cc; &#x641;&#x6cc;&#x644;&#x645;"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MenuItemSearchMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemSearchActionPerformed"/>
               </Events>
             </MenuItem>
@@ -32,7 +30,6 @@
                 <Property name="text" type="java.lang.String" value="&#x648;&#x6cc;&#x631;&#x627;&#x6cc;&#x634;"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MenuItemEditMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemEditActionPerformed"/>
               </Events>
             </MenuItem>
@@ -41,7 +38,6 @@
                 <Property name="text" type="java.lang.String" value="&#x62d;&#x630;&#x641;"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MenuItemDeletMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemDeletActionPerformed"/>
               </Events>
             </MenuItem>

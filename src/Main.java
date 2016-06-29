@@ -41,7 +41,6 @@ public class Main extends javax.swing.JFrame {
         jMenu1.setText("عملیات");
 
         MenuItemInsert.setText("ثبت فیلم");
-
         MenuItemInsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuItemInsertActionPerformed(evt);
@@ -50,7 +49,6 @@ public class Main extends javax.swing.JFrame {
         jMenu1.add(MenuItemInsert);
 
         MenuItemSearch.setText("جستوجوی فیلم");
-
         MenuItemSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuItemSearchActionPerformed(evt);
@@ -59,7 +57,6 @@ public class Main extends javax.swing.JFrame {
         jMenu1.add(MenuItemSearch);
 
         MenuItemEdit.setText("ویرایش");
-
         MenuItemEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuItemEditActionPerformed(evt);
@@ -68,7 +65,6 @@ public class Main extends javax.swing.JFrame {
         jMenu1.add(MenuItemEdit);
 
         MenuItemDelet.setText("حذف");
-
         MenuItemDelet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuItemDeletActionPerformed(evt);

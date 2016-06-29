@@ -26,8 +26,66 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        MenuItemInsert = new javax.swing.JMenuItem();
+        MenuItemSearch = new javax.swing.JMenuItem();
+        MenuItemEdit = new javax.swing.JMenuItem();
+        MenuItemDelet = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        MenuItemList = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("مدیریت فیلم");
+
+        jMenu1.setText("عملیات");
+
+        MenuItemInsert.setText("ثبت فیلم");
+
+        MenuItemInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemInsertActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MenuItemInsert);
+
+        MenuItemSearch.setText("جستوجوی فیلم");
+
+        MenuItemSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemSearchActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MenuItemSearch);
+
+        MenuItemEdit.setText("ویرایش");
+
+        MenuItemEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemEditActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MenuItemEdit);
+
+        MenuItemDelet.setText("حذف");
+
+        MenuItemDelet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemDeletActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MenuItemDelet);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("گزارش گیری");
+
+        MenuItemList.setText("لیست");
+        jMenu2.add(MenuItemList);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -37,11 +95,31 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void MenuItemSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemSearchActionPerformed
+      JFrameSearch jFrameSearch = new JFrameSearch();
+        jFrameSearch.setVisible(true);
+    }//GEN-LAST:event_MenuItemSearchActionPerformed
+
+    private void MenuItemInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemInsertActionPerformed
+        JFrameInsert jFrameInsert = new JFrameInsert();
+        jFrameInsert.setVisible(true);
+    }//GEN-LAST:event_MenuItemInsertActionPerformed
+
+    private void MenuItemDeletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemDeletActionPerformed
+        JFrameEdit jFrameEdit = new JFrameEdit();
+        jFrameEdit.setVisible(true);
+    }//GEN-LAST:event_MenuItemDeletActionPerformed
+
+    private void MenuItemEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemEditActionPerformed
+        JFrameEdit jFrameEdit = new JFrameEdit();
+        jFrameEdit.setVisible(true);
+    }//GEN-LAST:event_MenuItemEditActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,6 +150,7 @@ public class Main extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Main().setVisible(true);
             }
@@ -79,5 +158,13 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuItemDelet;
+    private javax.swing.JMenuItem MenuItemEdit;
+    private javax.swing.JMenuItem MenuItemInsert;
+    private javax.swing.JMenuItem MenuItemList;
+    private javax.swing.JMenuItem MenuItemSearch;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

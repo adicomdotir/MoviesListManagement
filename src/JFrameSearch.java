@@ -1,3 +1,8 @@
+
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,12 +14,23 @@
  * @author Mahdi
  */
 public class JFrameSearch extends javax.swing.JFrame {
-
+    private DefaultTableModel model;
     /**
      * Creates new form JFrameSearch
      */
     public JFrameSearch() {
         initComponents();
+        ArrayList<String> list = SqlHelper.selectAll("SELECT * FROM movies;");
+        model = (DefaultTableModel) tableSearch.getModel();
+        for(int i=0; i<list.size(); i++) {
+            Vector row = new Vector();
+            String[] strArr = list.get(i).split("&");
+            row.clear();
+            for (String object : strArr) {
+                row.add(object);
+            }
+            model.addRow(row);
+        }
     }
 
     /**
@@ -30,27 +46,45 @@ public class JFrameSearch extends javax.swing.JFrame {
         txtSearch = new javax.swing.JTextField();
         BtnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TableSearch = new javax.swing.JTable();
+        tableSearch = new javax.swing.JTable();
         BtnExit = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("جستجو");
 
-        jLabel1.setText("نام کتاب");
+        jLabel1.setText("نام فیلم");
 
-        BtnSearch.setText("جستوجو");
+        BtnSearch.setText("جستجو");
+        BtnSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnSearchMouseClicked(evt);
+            }
+        });
 
-        TableSearch.setModel(new javax.swing.table.DefaultTableModel(
+        tableSearch.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "نام فیلم", "نوع فیلم", "تعداد سی دی", "سال ساخت فیلم", "شرکت", "کشور", "کارگردان"
+                "نام فیلم", "سبک", "سال ساخت", "کشور", "کارگردان", "تهیه کننده"
             }
-        ));
-        jScrollPane1.setViewportView(TableSearch);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tableSearch);
+        if (tableSearch.getColumnModel().getColumnCount() > 0) {
+            tableSearch.getColumnModel().getColumn(0).setResizable(false);
+            tableSearch.getColumnModel().getColumn(1).setResizable(false);
+            tableSearch.getColumnModel().getColumn(2).setResizable(false);
+            tableSearch.getColumnModel().getColumn(3).setResizable(false);
+            tableSearch.getColumnModel().getColumn(4).setResizable(false);
+            tableSearch.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         BtnExit.setText("برگشت");
         BtnExit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -71,11 +105,11 @@ public class JFrameSearch extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addComponent(BtnSearch)
-                        .addGap(68, 68, 68)
+                        .addGap(85, 85, 85)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
-                        .addGap(0, 112, Short.MAX_VALUE)))
+                        .addGap(0, 123, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -103,6 +137,25 @@ public class JFrameSearch extends javax.swing.JFrame {
     private void BtnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnExitMouseClicked
        this.setVisible(false);
     }//GEN-LAST:event_BtnExitMouseClicked
+
+    private void BtnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnSearchMouseClicked
+        for(int j=0; j<model.getRowCount(); j++)
+            model.removeRow(j);
+        if(txtSearch.getText().trim().length()>0) {
+            ArrayList<String> list = SqlHelper.selectAll("SELECT * FROM movies WHERE title LIKE '%" + 
+                    txtSearch.getText()+"%';");
+            model = (DefaultTableModel) tableSearch.getModel();
+            for(int i=0; i<list.size(); i++) {
+                Vector row = new Vector();
+                String[] strArr = list.get(i).split("&");
+                row.clear();
+                for (String object : strArr) {
+                    row.add(object);
+                }
+                model.addRow(row);
+            }
+        }
+    }//GEN-LAST:event_BtnSearchMouseClicked
 
     /**
      * @param args the command line arguments
@@ -143,9 +196,9 @@ public class JFrameSearch extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnExit;
     private javax.swing.JButton BtnSearch;
-    private javax.swing.JTable TableSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tableSearch;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

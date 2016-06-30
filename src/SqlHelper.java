@@ -1,9 +1,11 @@
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -59,7 +61,7 @@ public class SqlHelper {
                 for (int i = 1; i <= metaData.getColumnCount(); i++) {
                     strTemp += rs.getObject(i) + "&";
                 }
-                
+
             } else {
                 System.out.println("not exist record.");
             }
@@ -115,7 +117,7 @@ public class SqlHelper {
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
-            
+
             stmt.executeUpdate(query);
             c.commit();
         } catch (ClassNotFoundException | SQLException e) {
@@ -131,8 +133,45 @@ public class SqlHelper {
         }
         System.out.println("Operation done successfully");
     }
-}
 
-interface ResultSetConsumer<T> {
-    public T consume(ResultSet rs);
+    public static ArrayList<String> selectAll(String query) {
+        Connection c = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        ArrayList<String> list = new ArrayList();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            c.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+
+            stmt = c.createStatement();
+            rs = stmt.executeQuery(query);
+            String temp = "";
+            
+            while(rs.next()) {
+                temp = rs.getString("title") +"&";
+                temp += rs.getString("genre") +"&";
+                temp += rs.getInt("year") +"&";
+                temp += rs.getString("country") +"&";
+                temp += rs.getString("director") +"&";
+                temp += rs.getString("producer") +"&";
+                list.add(temp);
+            }
+            
+            rs.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        } finally {
+            try {
+                stmt.close();
+                c.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SqlHelper.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        System.out.println("Operation done successfully");
+        return list;
+    }
 }

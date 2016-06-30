@@ -19,7 +19,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MenuItemSearch">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x62c;&#x633;&#x62a;&#x648;&#x62c;&#x648;&#x6cc; &#x641;&#x6cc;&#x644;&#x645;"/>
+                <Property name="text" type="java.lang.String" value="&#x62c;&#x633;&#x62a;&#x62c;&#x648;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemSearchActionPerformed"/>

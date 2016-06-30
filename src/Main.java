@@ -48,7 +48,7 @@ public class Main extends javax.swing.JFrame {
         });
         jMenu1.add(MenuItemInsert);
 
-        MenuItemSearch.setText("جستوجوی فیلم");
+        MenuItemSearch.setText("جستجو");
         MenuItemSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuItemSearchActionPerformed(evt);

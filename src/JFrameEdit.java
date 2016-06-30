@@ -83,7 +83,7 @@ public class JFrameEdit extends javax.swing.JFrame {
             }
         });
 
-        BtnDelete.setText("پاک کردن");
+        BtnDelete.setText("حذف کردن");
         BtnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnDeleteMouseClicked(evt);
@@ -186,12 +186,18 @@ public class JFrameEdit extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnExiteMouseClicked
 
     private void BtnDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnDeleteMouseClicked
-        txtTitle.setText("");
-        txtYear.setText("");
-        txtCountry.setText("");
-        txtDirector.setText("");
-        txtPro.setText("");
+        if(valid && validId!=-1) {
+            String query = "DELETE FROM movies "
+                    + "WHERE id="+validId+";";
+            SqlHelper.update(query);
+            txtTitle.setText("");
+            txtYear.setText("");
+            txtCountry.setText("");
+            txtDirector.setText("");
+            txtPro.setText("");
+        }
         valid = false;
+        validId = -1;
     }//GEN-LAST:event_BtnDeleteMouseClicked
 
     private void BtnInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnInsertMouseClicked
@@ -205,8 +211,14 @@ public class JFrameEdit extends javax.swing.JFrame {
                     +"',producer='"+txtPro.getText()
                     + "' WHERE id="+validId+";";
             SqlHelper.update(query);
-            BtnDeleteMouseClicked(evt);
-        }        
+            txtTitle.setText("");
+            txtYear.setText("");
+            txtCountry.setText("");
+            txtDirector.setText("");
+            txtPro.setText("");
+        }
+        valid = false;
+        validId = -1;
     }//GEN-LAST:event_BtnInsertMouseClicked
 
     private void BtnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnSearchMouseClicked

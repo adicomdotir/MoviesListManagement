@@ -148,17 +148,18 @@ public class SqlHelper {
             stmt = c.createStatement();
             rs = stmt.executeQuery(query);
             String temp = "";
-            
-            while(rs.next()) {
-                temp = rs.getString("title") +"&";
-                temp += rs.getString("genre") +"&";
-                temp += rs.getInt("year") +"&";
-                temp += rs.getString("country") +"&";
-                temp += rs.getString("director") +"&";
-                temp += rs.getString("producer") +"&";
+
+            while (rs.next()) {
+                temp = rs.getInt("id") + "&";
+                temp += rs.getString("title") + "&";
+                temp += rs.getString("genre") + "&";
+                temp += rs.getInt("year") + "&";
+                temp += rs.getString("country") + "&";
+                temp += rs.getString("director") + "&";
+                temp += rs.getString("producer") + "&";
                 list.add(temp);
             }
-            
+
             rs.close();
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());

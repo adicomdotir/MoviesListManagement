@@ -65,11 +65,11 @@ public class JFrameSearch extends javax.swing.JFrame {
 
             },
             new String [] {
-                "نام فیلم", "سبک", "سال ساخت", "کشور", "کارگردان", "تهیه کننده"
+                "کد", "نام فیلم", "سبک", "سال ساخت", "کشور", "کارگردان", "تهیه کننده"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -84,6 +84,7 @@ public class JFrameSearch extends javax.swing.JFrame {
             tableSearch.getColumnModel().getColumn(3).setResizable(false);
             tableSearch.getColumnModel().getColumn(4).setResizable(false);
             tableSearch.getColumnModel().getColumn(5).setResizable(false);
+            tableSearch.getColumnModel().getColumn(6).setResizable(false);
         }
 
         BtnExit.setText("برگشت");
